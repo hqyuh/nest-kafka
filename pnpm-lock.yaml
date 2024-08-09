@@ -58,6 +58,9 @@ devDependencies:
   '@types/jest':
     specifier: ^29.5.2
     version: 29.5.12
+  '@types/kafkajs':
+    specifier: ^1.9.0
+    version: 1.9.0
   '@types/node':
     specifier: ^20.3.1
     version: 20.14.14
@@ -1220,6 +1223,13 @@ packages:
 
   /@types/json-schema@7.0.15:
     resolution: {integrity: sha512-5+fP8P8MFNC+AyZCDxrB2pkZFPGzqQWUzpSeuuVLvm8VMcorNYavBqoFcxK8bQz4Qsbn4oUEEem4wDLfcysGHA==}
+    dev: true
+
+  /@types/kafkajs@1.9.0:
+    resolution: {integrity: sha512-R9VDNbiw+vNfxWjjFHUrLMF/Dfc7asGXzKtYUwI4FaT24Chf5ZNkfvce54p4dkLMxPcsrEsVazAK0Jp2ib4Zxw==}
+    deprecated: This is a stub types definition. kafkajs provides its own type definitions, so you do not need this installed.
+    dependencies:
+      kafkajs: 2.2.4
     dev: true
 
   /@types/methods@1.1.4:
@@ -3742,7 +3752,6 @@ packages:
   /kafkajs@2.2.4:
     resolution: {integrity: sha512-j/YeapB1vfPT2iOIUn/vxdyKEuhuY2PxMBvf5JWux6iSaukAccrMtXEY/Lb7OvavDhOWME589bpLrEdnVHjfjA==}
     engines: {node: '>=14.0.0'}
-    dev: false
 
   /kareem@2.6.3:
     resolution: {integrity: sha512-C3iHfuGUXK2u8/ipq9LfjFfXFxAZMQJJq7vLS45r3D9Y2xQ/m4S8zaR4zMLFWh9AsNPXmcFfUDhTEO8UIC/V6Q==}

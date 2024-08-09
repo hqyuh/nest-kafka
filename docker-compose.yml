@@ -1,6 +1,21 @@
-version: "3.0"
-
+version: '3.8'
 services:
+  nest-kafka:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: nest-kafka
+    ports:
+      - 3000:3000
+    env_file:
+      - .env
+    networks:
+      - nest_network
+    depends_on:
+      - mongodb
+      - kafka
+      - zookeeper
+
   mongodb:
     container_name: mongodb
     image: mongo:5.0
@@ -12,37 +27,52 @@ services:
       - nest_network
 
   zookeeper:
+    image: bitnami/zookeeper:latest
     container_name: zookeeper
-    image: bitnami/zookeeper
-    restart: always
-    ports:
-      - 2181:2181
-    volumes:
-      - "zookeeper_data:/bitnami"
     environment:
       - ALLOW_ANONYMOUS_LOGIN=yes
+    ports:
+      - '2181:2181'
+    volumes:
+      - zookeeper_data:/bitnami
     networks:
       - nest_network
 
   kafka:
+    image: bitnami/kafka:latest
     container_name: kafka
-    image: bitnami/kafka
     ports:
-      - 9092:9092
-      - 29092:29092
-    restart: always
-    volumes:
-      - kafka_data:/bitnami
+      - '9092:9092'
+      - '29092:29092'
     environment:
-      - KAFKA_CFG_ZOOKEEPER_CONNECT=zookeeper:2181
-      - ALLOW_PLAINTEXT_LISTENER=yes
-      - KAFKA_CFG_LISTENERS=PLAINTEXT://:9092,PLAINTEXT_HOST://:29092
-      - KAFKA_CFG_ADVERTISED_LISTENERS=PLAINTEXT://kafka:9092,PLAINTEXT_HOST://localhost:29092
+      - KAFKA_BROKER_ID=1
+      - KAFKA_ZOOKEEPER_CONNECT=zookeeper:2181
+      - KAFKA_LISTENERS=PLAINTEXT://0.0.0.0:9092,PLAINTEXT_HOST://0.0.0.0:29092
+      - KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://kafka:9092,PLAINTEXT_HOST://kafka:29092
+      - KAFKA_LISTENER_SECURITY_PROTOCOL_MAP=PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+      - KAFKA_INTER_BROKER_LISTENER_NAME=PLAINTEXT
+      - KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR=1
     depends_on:
       - zookeeper
+    volumes:
+      - kafka_data:/bitnami
     networks:
       - nest_network
 
+  kafka-ui:
+    image: provectuslabs/kafka-ui:latest
+    container_name: kafka-ui
+    ports:
+      - '8080:8080'
+    environment:
+      - KAFKA_CLUSTERS_0_NAME=local
+      - KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS=kafka:9092
+      - KAFKA_CLUSTERS_0_ZOOKEEPER=zookeeper:2181
+      - KAFKA_CLUSTERS_0_READONLY=false
+    depends_on:
+      - kafka
+    networks:
+      - nest_network
 volumes:
   zookeeper_data:
     driver: local

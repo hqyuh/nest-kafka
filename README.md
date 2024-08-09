@@ -75,15 +75,7 @@ NEST-KAFKA/
 
 ### Running the Application
 
-1. **Run the application**:
-
-   ```bash
-   pnpm run start
-   ```
-
-   This command will start the NestJS application.
-
-2. **Run with Docker**:
+2. **Run with Docker compose**:
 
    If you prefer to run the application in a Docker container, use the following command:
 
@@ -95,12 +87,14 @@ NEST-KAFKA/
 
 ### Development
 
+> Notes: Start container kafka, mongodb, zookeeper at first.
+
 - **Watch Mode**:
 
   For development purposes, you can run the application in watch mode:
 
   ```bash
-  pnpm run start:dev
+  pnpm start nest-kafka
   ```
 
 - **Linting**:
