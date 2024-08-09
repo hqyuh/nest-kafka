@@ -1,73 +1,124 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# NEST-KAFKA
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+## Overview
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+This project is a NestJS application designed to work with Kafka for messaging. The structure follows the best practices for NestJS and Kafka integration, with services and consumers to handle Kafka topics and messages.
 
-## Description
+## Project Structure
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
-
-## Installation
-
-```bash
-$ pnpm install
+```
+NEST-KAFKA/
+├── apps/
+├── libs/
+├── node_modules/
+├── .env
+├── .eslintrc.js
+├── .gitignore
+├── .prettierrc
+├── docker-compose.yml
+├── Dockerfile
+├── nest-cli.json
+├── package.json
+├── pnpm-lock.yaml
+├── README.md
+├── tsconfig.build.json
+├── tsconfig.json
 ```
 
-## Running the app
+### Directories and Files
 
-```bash
-# development
-$ pnpm run start
+- **apps/**: Contains the main application code.
+- **libs/**: Contains shared libraries and modules.
+- **node_modules/**: Directory for installed dependencies.
+- **.env**: Environment variables configuration.
+- **.eslintrc.js**: ESLint configuration file.
+- **.gitignore**: Specifies files and directories to be ignored by git.
+- **.prettierrc**: Prettier configuration file.
+- **docker-compose.yml**: Docker Compose configuration for setting up Kafka and other services.
+- **Dockerfile**: Docker configuration for building the application container.
+- **nest-cli.json**: Nest CLI configuration file.
+- **package.json**: Project's manifest file which includes metadata and dependencies.
+- **pnpm-lock.yaml**: Lockfile for pnpm package manager.
+- **README.md**: Project documentation.
+- **tsconfig.build.json**: TypeScript configuration for the build process.
+- **tsconfig.json**: General TypeScript configuration.
 
-# watch mode
-$ pnpm run start:dev
+## Getting Started
 
-# production mode
-$ pnpm run start:prod
-```
+### Prerequisites
 
-## Test
+- **Node.js**: Ensure you have Node.js installed.
+- **pnpm**: Install pnpm package manager if not already installed. You can install it globally using npm:
 
-```bash
-# unit tests
-$ pnpm run test
+  ```bash
+  npm install -g pnpm
+  ```
 
-# e2e tests
-$ pnpm run test:e2e
+### Installation
 
-# test coverage
-$ pnpm run test:cov
-```
+1. **Clone the repository**:
 
-## Support
+   ```bash
+   git clone <repository-url>
+   cd nest-kafka
+   ```
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+2. **Install dependencies**:
 
-## Stay in touch
+   ```bash
+   pnpm install
+   ```
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+3. **Set up environment variables**:
+
+   Create a `.env` file in the root directory and add your environment variables.
+
+### Running the Application
+
+1. **Run the application**:
+
+   ```bash
+   pnpm run start
+   ```
+
+   This command will start the NestJS application.
+
+2. **Run with Docker**:
+
+   If you prefer to run the application in a Docker container, use the following command:
+
+   ```bash
+   docker-compose up --build
+   ```
+
+   This command will build and run the Docker containers defined in the `docker-compose.yml` file.
+
+### Development
+
+- **Watch Mode**:
+
+  For development purposes, you can run the application in watch mode:
+
+  ```bash
+  pnpm run start:dev
+  ```
+
+- **Linting**:
+
+  To check and fix linting issues, run:
+
+  ```bash
+  pnpm run lint
+  ```
+
+## Kafka Integration
+
+The project uses Kafka for messaging. Make sure Kafka is properly set up and running. You can configure the Kafka settings in the `.env` file.
+
+## Contribution
+
+Feel free to fork this repository and contribute by submitting a pull request. Any feedback or suggestions are welcome!
 
 ## License
 
-Nest is [MIT licensed](LICENSE).
+This project is licensed under the MIT License. See the LICENSE file for more details.
