@@ -11,6 +11,7 @@ export class TestConsumer implements OnModuleInit {
       topic: { topics: [TOPIC.TEST] },
       config: { groupId: GROUP.GROUP_TEST },
       onMessage: async (message) => {
+        console.log('Received message from topic:', TOPIC.TEST);
         console.log({
           value: message.value.toString(),
         });

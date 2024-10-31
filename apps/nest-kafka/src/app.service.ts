@@ -8,8 +8,8 @@ export class AppService {
 
   async getHello(): Promise<string> {
     await this.producerService.produce(TOPIC.TEST, {
-      value: 'Hello World',
+      value: 'Send message from nest-kafka',
     });
-    return 'Hello World!';
+    return 'Send message from nest-kafka!';
   }
 }

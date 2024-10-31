@@ -1,7 +1,7 @@
 export const TOPIC = {
-  TEST: 'test',
+  TEST: 'hehe',
 };
 
 export const GROUP = {
-  GROUP_TEST: 'test-consumer',
+  GROUP_TEST: 'hehe-consumer',
 };

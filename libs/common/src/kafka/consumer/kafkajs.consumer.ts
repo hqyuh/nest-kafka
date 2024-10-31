@@ -29,6 +29,7 @@ export class KafkajsConsumer implements IConsumer {
 
   async consume(onMessage: (message: KafkaMessage) => Promise<void>) {
     await this.consumer.subscribe(this.topic);
+    console.log('Subscribed to topic:', this.topic.topics);
     await this.consumer.run({
       eachMessage: async ({ message, partition }) => {
         this.logger.debug(`Processing message partition: ${partition}`);

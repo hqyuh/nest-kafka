@@ -15,8 +15,8 @@ describe('AppController', () => {
   });
 
   describe('root', () => {
-    it('should return "Hello World!"', () => {
-      expect(appController.getHello()).toBe('Hello World!');
+    it('should return "Send message from nest-kafka!"', () => {
+      expect(appController.getHello()).toBe('Send message from nest-kafka!');
     });
   });
 });
